@@ -6,11 +6,15 @@ Requires at least: 2.7
 Tested up to: 2.8.3
 Stable:trunk
 
-Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+
+Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+.
 
 == Description ==
 
 Although WordPress comes with a similar feature, called the "Meta" widget, the built in Meta control uses a lot of screen space and presents more information than some site designers would like. This Login/Logout widget provides web designers with a compact alternative.
+
+When the user is not logged in, the widget presents options to Register and to Login. For logged in users, the options change to Logout and, depending on the user's role, a link to their profile or to the main site administration pages.
+
+If the user is logged in, the widget also display's the username and their email address.
 
 Website administrators simply need to download and unzip the software, then copy one file to their WordPress plugins directory. Then login to WordPress as an administrator, go to the Plugins control panel and activate the plugin. Once activated, they can add the Login-Logout widget to any Widget-enabled WordPress sidebar.
 
