@@ -28,6 +28,12 @@ Website administrators simply need to download and unzip the software, then copy
 
 == Frequently Asked Questions ==
 
+What is the required format for the links that can be displayed by the widget?
+These settings are managed from the Tools menu, Login & Out menu option.
+Enter any text description you line in the "Add text for new link" box.
+Enter a full URI - e.g. http://www.thehypervisor.com - to link to an external site.
+Enter a permalink - e.g. /about - to link to an internal Wordpress blog page or post.
+
 = What about foo bar? =
 
 Sorry, we can't help you with that one.
