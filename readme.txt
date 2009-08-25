@@ -3,8 +3,8 @@ Contributors: roggie
 Donate link: http://www.rogerh.com/donate.html
 Tags: widget, login, logout
 Requires at least: 2.7
-Tested up to: 2.8.3
-Stable:1.0
+Tested up to: 2.8.4
+Stable:1.1
 
 Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+.
 
@@ -42,3 +42,7 @@ the directory of the stable readme.txt, so in this case, `/trunk/screenshot-1.jp
 
 = 1.1 =
 Added new admin page to Tools menu.
+- enables admin to enter list of text labels and URLs. If list is not empty, the links are displayed by the widget.
+Added config options to widget:
+- checkbox to toggle display of user's email address.
+- checkbox to toggle center alignment of widget text.
