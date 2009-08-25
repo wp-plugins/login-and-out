@@ -39,3 +39,6 @@ the directory of the stable readme.txt, so in this case, `/trunk/screenshot-1.jp
 
 
 == Changelog ==
+
+= 1.1 =
+Added new admin page to Tools menu.
