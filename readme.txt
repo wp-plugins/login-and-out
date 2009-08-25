@@ -4,7 +4,7 @@ Donate link: http://www.rogerh.com/donate.html
 Tags: widget, login, logout
 Requires at least: 2.7
 Tested up to: 2.8.4
-Stable:1.1
+Stable:1.2
 
 Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+.
 
@@ -46,3 +46,6 @@ Added new admin page to Tools menu.
 Added config options to widget:
 - checkbox to toggle display of user's email address.
 - checkbox to toggle center alignment of widget text.
+
+= 1.2 =
+Changed format for link URL displayed by widget. Enter full URI for extrnal website or /pagename for permalink to page on local wordpress site

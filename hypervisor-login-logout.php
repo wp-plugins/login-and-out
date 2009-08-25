@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 1.1
+Version: 1.2
 Author: Roger Howorth
 Author URI: www.thehypervisor.com
 Description: Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+
@@ -50,7 +50,7 @@ function rhsidebar_meta($args) {
         $all_links = get_option ( 'rh_hidedash_links_options' );
         if ( !empty($all_links)) {
             foreach ( $all_links as $link ) {
-            $extra_links = $extra_links . '<a href="http://'. current($link) .'">'. key($link).'</a> ';
+            $extra_links = $extra_links . '<a href="'. current($link) .'">'. key($link).'</a> ';
             } 
         }
 	if (is_user_logged_in()) {
