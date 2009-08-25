@@ -14,7 +14,7 @@ Although WordPress comes with a similar feature, called the "Meta" widget, the b
 
 When the user is not logged in, the widget presents options to Register and to Login. For logged in users, the options change to Logout and, depending on the user's role, a link to their profile or to the main site administration pages.
 
-If the user is logged in, the widget also display's the username and their email address.
+If the user is logged in, the widget also displays the username and their email address.
 
 Website administrators simply need to download and unzip the software, then copy one file to their WordPress plugins directory. Then login to WordPress as an administrator, go to the Plugins control panel and activate the plugin. Once activated, they can add the Login-Logout widget to any Widget-enabled WordPress sidebar.
 
@@ -33,10 +33,6 @@ These settings are managed from the Tools menu, Login & Out menu option.
 Enter any text description you line in the "Add text for new link" box.
 Enter a full URI - e.g. http://www.thehypervisor.com - to link to an external site.
 Enter a permalink - e.g. /about - to link to an internal Wordpress blog page or post.
-
-= What about foo bar? =
-
-Sorry, we can't help you with that one.
 
 == Screenshots ==
 
