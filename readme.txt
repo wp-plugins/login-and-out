@@ -39,8 +39,9 @@ Enter a permalink - e.g. /about - to link to an internal Wordpress blog page or 
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.jpg. It shows the widget near the bottom right corner of the screen.
-2. Version 1.1+ of the Login & Logout widget has some configuration options.
+1. This shows the widget near the bottom right corner of the screen.
+2. Widget Configuration Options (Version 1.1+).
+3. General Configuration Options - accessed from Tools menu.
 
 == Changelog ==
 
