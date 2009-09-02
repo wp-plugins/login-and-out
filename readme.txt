@@ -10,7 +10,7 @@ Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+.
 
 == Description ==
 
-Although WordPress comes with a similar feature, called the "Meta" widget, the built in Meta control uses a lot of screen space and presents more information than some site designers would like. This Login/Logout widget provides web designers with a compact alternative.
+The WordPress "Meta" widget uses a lot of screen space and presents more information than some site designers would like. This Login/Logout widget provides web designers with a compact alternative.
 
 When the user is not logged in, the widget presents options to Register and to Login. Once logged in, users are redirected back to the page they came from instead of the Profile pages or other admin screens. The widget also displays the username and has an option to also display their email address.
 
