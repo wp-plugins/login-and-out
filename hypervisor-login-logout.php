@@ -62,7 +62,7 @@ function rhsidebar_meta($args) {
                 else printf('Welcome, <u><b>%s</b></u><br />Options: &nbsp;',$user_identity);
 		// Default Strings
 		$link_string_site = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/index.php\" title=\"".__('Site Admin')."\">".__('Site Admin')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
-		$link_string_logout = '<a href="'. wp_logout_url(get_permalink()) .'" title="Log out">Log out</a>';
+		$link_string_logout = '<a href="'. wp_logout_url($_SERVER['REQUEST_URI']) .'" title="Log out">Log out</a>';
 		$link_string_edit = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/edit.php\" title=\"".__('Edit Posts')."\">".__('Edit Posts')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
 		$link_string_profile = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/profile.php\" title=\"".__('My Profile')."\">".__('My Profile')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
 
@@ -225,6 +225,5 @@ Or consider making a donation.<br />
 <?php
 }
 
-
-
 ?>
+
