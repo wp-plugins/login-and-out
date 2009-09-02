@@ -18,8 +18,6 @@ There is also a link to Logout and, depending on the user's role, a link to thei
 
 A hyperlink option enables the widget to display an arbitrary number of hyperlinks to other sites/pages. Other options enable the appearance of the widget to be customized to suit the theme design.
 
-Website administrators simply need to download and unzip the software, then copy one file to their WordPress plugins directory. Then login to WordPress as an administrator, go to the Plugins control panel and activate the plugin. Once activated, they can add the Login-Logout widget to any Widget-enabled WordPress sidebar.
-
 <a href="http://www.thehypervisor.com/login-logout-changelog/">Changelog</a>
 
 <a href="http://twitter.com/thehypervisor">Follow me on Twitter</a href>
