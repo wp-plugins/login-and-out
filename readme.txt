@@ -12,13 +12,11 @@ Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+.
 
 Although WordPress comes with a similar feature, called the "Meta" widget, the built in Meta control uses a lot of screen space and presents more information than some site designers would like. This Login/Logout widget provides web designers with a compact alternative.
 
-When the user is not logged in, the widget presents options to Register and to Login. Once logged in, users are redirected back to the page they came from instead of the Profile pages or other admin screens.
+When the user is not logged in, the widget presents options to Register and to Login. Once logged in, users are redirected back to the page they came from instead of the Profile pages or other admin screens. The widget also displays the username and has an option to also display their email address.
 
-Once the user is logged in, the widget also displays the username and has an option to also display their email address.
+There is also a link to Logout and, depending on the user's role, a link to their profile or to the main site administration pages. Users are redirected back to the page they came from after they logout.
 
-For logged in users, there are options to Logout and, depending on the user's role, a link to their profile or to the main site administration pages. Users are redirected back to the page they came from after they logout.
-
-A hyperlink option enables widget to display an arbitrary number of hyperlinks to other sites/pages. Other options enable the appearance of the widget to be customized to suit the theme design.
+A hyperlink option enables the widget to display an arbitrary number of hyperlinks to other sites/pages. Other options enable the appearance of the widget to be customized to suit the theme design.
 
 Website administrators simply need to download and unzip the software, then copy one file to their WordPress plugins directory. Then login to WordPress as an administrator, go to the Plugins control panel and activate the plugin. Once activated, they can add the Login-Logout widget to any Widget-enabled WordPress sidebar.
 
