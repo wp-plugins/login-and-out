@@ -45,4 +45,4 @@ Enter a permalink - e.g. /about - to link to an internal Wordpress blog page or 
 
 == Changelog ==
 
-<a href="http://www.thehypervisor.com/login-logout-changelog/">Changelog</a>
+Click this link to see the <a href="http://www.thehypervisor.com/login-logout-changelog/">changelog</a>.
