@@ -18,6 +18,9 @@ If the user is logged in, the widget also displays the username and their email 
 
 Website administrators simply need to download and unzip the software, then copy one file to their WordPress plugins directory. Then login to WordPress as an administrator, go to the Plugins control panel and activate the plugin. Once activated, they can add the Login-Logout widget to any Widget-enabled WordPress sidebar.
 
+<a href="http://www.thehypervisor.com/login-logout-changelog/">Changelog</a>
+
+<a href="http://twitter.com/thehypervisor">Follow me on Twitter</a href>
 
 == Installation ==
 
@@ -28,7 +31,7 @@ Website administrators simply need to download and unzip the software, then copy
 
 == Frequently Asked Questions ==
 
-What is the required format for the links that can be displayed by the widget?
+<strong>What is the required format for the links that can be displayed by the widget?</strong>
 These settings are managed from the Tools menu, Login & Out menu option.
 Enter any text description you line in the "Add text for new link" box.
 Enter a full URI - e.g. http://www.thehypervisor.com - to link to an external site.
@@ -41,16 +44,4 @@ Enter a permalink - e.g. /about - to link to an internal Wordpress blog page or 
 
 == Changelog ==
 
-= 1.1 =
-Added new admin page to Tools menu.
-- enables admin to enter list of text labels and URLs. If list is not empty, the links are displayed by the widget.
-Added config options to widget:
-- checkbox to toggle display of user's email address.
-- checkbox to toggle center alignment of widget text.
-
-= 1.2 =
-Changed format for link URL displayed by widget. Enter full URI for extrnal website or /pagename for permalink to page on local wordpress site.
-
-= 1.3 =
-Added option to remove the "options" label for logged in users. This should make the widget look nicer in narrow sidebars.
-Bug fixes. Site width now working properly.
+<a href="http://www.thehypervisor.com/login-logout-changelog/">Changelog</a>
