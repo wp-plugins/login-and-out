@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 1.2
+Version: 1.3
 Author: Roger Howorth
 Author URI: www.thehypervisor.com
 Description: Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+
@@ -42,9 +42,9 @@ function rhsidebar_meta($args) {
 	extract ($args);
 	global $user_identity , $user_email;
 	$options = get_option('rh_hidedash_options');
-	if ( !wp_specialchars($options['rhhd_sb_width']) ) $sb_width = "200"; else $sb_width = wp_specialchars($options['rhhd_sb_width']); 
+	if ( !wp_specialchars($options['sidebar_width']) ) $options['sidebar_width'] = "200"; 
 	echo $before_widget;
-        if ( $options['center_widget'] ) echo '<div style="width:'. $sb_width . 'px; margin: 0px auto;">';
+        if ( $options['center_widget'] ) echo '<div style="width:'. wp_specialchars($options['sidebar_width']) . 'px; margin: 0px auto;">';
 	echo $before_title . $options['title'] . $after_title;
 
         $all_links = get_option ( 'rh_hidedash_links_options' );
@@ -56,11 +56,13 @@ function rhsidebar_meta($args) {
 	if (is_user_logged_in()) {
 		// User Already Logged In
 		get_currentuserinfo();  // Usually someone already did this, right?
-		if ( $options['display_email'] == '1') printf('Welcome, <u><b>%s</b></u> (%s)<br />Options: &nbsp;',$user_identity,$user_email);
+		if ( $options['display_email'] == '1' && !$options['hide_option_label'] ) printf('Welcome, <u><b>%s</b></u> (%s)<br />Options: &nbsp;',$user_identity,$user_email); else
+		if ( $options['display_email'] == '1' && $options['hide_option_label'] ) printf('Welcome, <u><b>%s</b></u> (%s)<br />',$user_identity,$user_email); else
+                if ( $options['hide_option_label'] ) printf('Welcome, <u><b>%s</b></u><br />',$user_identity);
                 else printf('Welcome, <u><b>%s</b></u><br />Options: &nbsp;',$user_identity);
 		// Default Strings
 		$link_string_site = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/index.php\" title=\"".__('Site Admin')."\">".__('Site Admin')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
-		$link_string_logout = '<a href="'. wp_logout_url(get_permalink()) .'" title="Log out">Log out</a>';
+		$link_string_logout = '<a href="'. wp_logout_url($_SERVER['REQUEST_URI']) .'" title="Log out">Log out</a>';
 		$link_string_edit = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/edit.php\" title=\"".__('Edit Posts')."\">".__('Edit Posts')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
 		$link_string_profile = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/profile.php\" title=\"".__('My Profile')."\">".__('My Profile')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
 
@@ -69,8 +71,8 @@ function rhsidebar_meta($args) {
 			echo $link_string_site;
 			echo $link_string_logout;
                         if ( $extra_links ) echo '<br />Links: '.$extra_links;
-			echo $after_widget;
                         if ( $options['center_widget'] ) echo '</div>';
+			echo $after_widget;
 			return;
 		}
 
@@ -114,10 +116,11 @@ function rhsidebar_meta_control () {
 		$options['sidebar_width'] = strip_tags(stripslashes($_POST['rhhd_sb_width']));
                 $options["display_email"] = $_POST['edisplay_email'];
                 $options["center_widget"] = $_POST['ecenter_widget'];
+                $options["hide_option_label"] = $_POST['ehide_option_label'];
 		update_option('rh_hidedash_options', $options);
 	}
 	$title = wp_specialchars($options['title']);
-	if ( !wp_specialchars($options['rhhd_sb_width']) ) $sb_width = "200"; else $sb_width = wp_specialchars($options['rhhd_sb_width']); 
+	if ( !wp_specialchars($options['sidebar_width']) ) $options['sidebar_width'] = "160"; 
 	?>
 	<p style="text-align: center">
 		<input type="hidden" name="rhhd_submit" id="rhhd_submit" value="1" />
@@ -126,9 +129,11 @@ function rhsidebar_meta_control () {
 	<p style="text-align: center">
                 <label for="edisplay_email"><?php _e('Display email: '); ?><input type="checkbox" '; <?php if ( $options["display_email"] == '1' ) echo 'checked="yes" '; ?> name="edisplay_email" id="edisplay_email" value="1" /></label></p>
 	<p style="text-align: center">
-                <label for="ecenter_widget"><?php _e('Center widget: '); ?><input type="checkbox" '; <?php if ( $options["center_widget"] == '1' ) echo 'checked="yes" '; ?> name="ecenter_widget" id="ecenter_widget" value="1" /></label>
+                <label for="ecenter_widget"><?php _e('Center widget: '); ?><input type="checkbox" '; <?php if ( $options["center_widget"] == '1' ) echo 'checked="yes" '; ?> name="ecenter_widget" id="ecenter_widget" value="1" /></label></p>
 	<p style="text-align: center">
-		<label for="rhhd_sb_width"><?php _e('Sidebar width:'); ?> <input type="text" size="5" maxlength="5" id="rhhd_sb_width" name="rhhd_sb_width" value="<?php echo $sb_width; ?>" /></label></p>
+                <label for="ehide_option_label"><?php _e('Hide option label: '); ?><input type="checkbox" '; <?php if ( $options["hide_option_label"] == '1' ) echo 'checked="yes" '; ?> name="ehide_option_label" id="ehide_option_label" value="1" /></label></p>
+	<p style="text-align: center">
+		<label for="rhhd_sb_width"><?php _e('Sidebar width:'); ?> <input type="text" size="5" maxlength="5" id="rhhd_sb_width" name="rhhd_sb_width" value="<?php echo wp_specialchars($options['sidebar_width']) ; ?>" /></label></p>
 	</p>
         <p>Please visit <a href="tools.php?page=login_out_menu">Login & Out widget settings</a> to adjust other settings.</p>
 	<?php
@@ -156,9 +161,6 @@ function login_and_out_menu() {
 function login_out_menu() {
     if ( isset ($_POST['update_loginout']) )  { 
         if ( !wp_verify_nonce ( $_POST['loginout-verify-key'], 'loginout') ) die('Failed security check. Reload page and retry');
-//        $options["display_email"] = $_POST['edisplay_email'];
-//        $options["center_widget"] = $_POST['ecenter_widget'];
-//        update_option ( 'rh_hidedash_options', $options );
 
         $cur_links = array();
         $new_links = array();
@@ -185,25 +187,9 @@ function login_out_menu() {
     <div class="form-field">
     <?php
     echo "<h2>Login and Out widget options</h2>";
-
-/*    $options= array();
-    $options = get_option( 'rh_hidedash_options' );
-    echo '<table border="2" cellpadding="4" width="15%"><tr>';
-    echo '<td>Display email?</td><td><input type="checkbox" ';
-    if ( $options["display_email"] == '1' ) echo 'checked="yes" ';
-    echo ' name="edisplay_email" id="edisplay_email" value="1" /></td></tr>';
-
-    echo '<td>Center widget?</td><td><input type="checkbox" ';
-    if ( $options["center_widget"] == '1' ) echo 'checked="yes" ';
-    echo ' name="ecenter_widget" id="ecenter_widget" value="1" /></td></tr>';
-*/
-    echo '<input type="hidden" name="loginout-verify-key" id="loginout-verify-key"
-    value="' . wp_create_nonce('loginout') . '" />';
-
-    echo '</table>';
+    echo '<input type="hidden" name="loginout-verify-key" id="loginout-verify-key" value="' . wp_create_nonce('loginout') . '" />';
 
     echo "<h3>Add a link to the widget</h3>";
-//delete_option('rh_hidedash_links_options');
     echo '<p>Add text for a new link :</p><p><input type="text" name="nlink-text" id="nlink-text" value="" /></p>';
     echo '<p>Add target for a new link :</p><p><input type="text" name="nlink-target" id="nlink-target" value="" /></p>';
     echo "<h3>Links on the widget (un-tick to delete)</h3>";
@@ -238,8 +224,6 @@ Or consider making a donation.<br />
 </form>
 <?php
 }
-
-
 
 ?>
 
