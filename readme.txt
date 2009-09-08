@@ -16,7 +16,7 @@ When the user is not logged in, the widget presents options to Register and to L
 
 There is also a link to Logout and, depending on the user's role, a link to their profile or to the main site administration pages. Users are redirected back to the page they came from after they logout.
 
-A hyperlink option enables the widget to display an arbitrary number of hyperlinks to other sites/pages. Other options enable the appearance of the widget to be customized to suit the theme design.
+A hyperlink option enables the widget to display an arbitrary number of hyperlinks to other sites/pages. These links are displayed only to logged in users. Other options enable the appearance of the widget to be customized to suit the theme design.
 
 <a href="http://www.thehypervisor.com/login-logout-changelog/">Changelog</a>
 
