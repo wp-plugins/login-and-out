@@ -4,7 +4,7 @@ Donate link: http://www.rogerh.com/donate.html
 Tags: widget, login, logout
 Requires at least: 2.7
 Tested up to: 2.8.4
-Stable:1.3.1
+Stable:1.4
 
 Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+.
 
