@@ -6,6 +6,7 @@ Author: Roger Howorth
 Author URI: www.thehypervisor.com
 Description: Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+
 License: http://www.gnu.org/licenses/gpl.html
+Text Domain: hypervisor-login-logout
 */
 /*
 Installation
