@@ -4,20 +4,23 @@ Donate link: http://www.rogerh.com/donate.html
 Tags: widget, login, logout
 Requires at least: 2.7
 Tested up to: 2.8.4
-Stable:1.2
+Stable:1.5
 
 Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+.
 
 == Description ==
 
-Although WordPress comes with a similar feature, called the "Meta" widget, the built in Meta control uses a lot of screen space and presents more information than some site designers would like. This Login/Logout widget provides web designers with a compact alternative.
+The WordPress "Meta" widget uses a lot of screen space and presents more information than some site designers would like. This Login/Logout widget provides web designers with a compact alternative.
 
-When the user is not logged in, the widget presents options to Register and to Login. For logged in users, the options change to Logout and, depending on the user's role, a link to their profile or to the main site administration pages.
+When the user is not logged in, the widget presents options to Register and to Login. Once logged in, users are redirected back to the page they came from instead of the Profile pages or other admin screens. The widget also displays the username and has an option to also display their email address.
 
-If the user is logged in, the widget also displays the username and their email address.
+There is also a link to Logout and, depending on the user's role, a link to their profile or to the main site administration pages. Users are redirected back to the page they came from after they logout.
 
-Website administrators simply need to download and unzip the software, then copy one file to their WordPress plugins directory. Then login to WordPress as an administrator, go to the Plugins control panel and activate the plugin. Once activated, they can add the Login-Logout widget to any Widget-enabled WordPress sidebar.
+A hyperlink option enables the widget to display an arbitrary number of hyperlinks to other sites/pages. These links are displayed only to logged in users. Other options enable the appearance of the widget to be customized to suit the theme design.
 
+<a href="http://www.thehypervisor.com/login-logout-changelog/">Changelog</a>
+
+<a href="http://twitter.com/thehypervisor">Follow me on Twitter</a href>
 
 == Installation ==
 
@@ -28,7 +31,7 @@ Website administrators simply need to download and unzip the software, then copy
 
 == Frequently Asked Questions ==
 
-What is the required format for the links that can be displayed by the widget?
+<strong>What is the required format for the links that can be displayed by the widget?</strong>
 These settings are managed from the Tools menu, Login & Out menu option.
 Enter any text description you line in the "Add text for new link" box.
 Enter a full URI - e.g. http://www.thehypervisor.com - to link to an external site.
@@ -36,17 +39,10 @@ Enter a permalink - e.g. /about - to link to an internal Wordpress blog page or 
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.jpg. It shows the widget near the bottom right corner of the screen.
-2. Version 1.1+ of the Login & Logout widget has some configuration options.
+1. This shows the widget near the bottom right corner of the screen.
+2. Widget Configuration Options (Version 1.1+).
+3. General Configuration Options - accessed from Tools menu.
 
 == Changelog ==
 
-= 1.1 =
-Added new admin page to Tools menu.
-- enables admin to enter list of text labels and URLs. If list is not empty, the links are displayed by the widget.
-Added config options to widget:
-- checkbox to toggle display of user's email address.
-- checkbox to toggle center alignment of widget text.
-
-= 1.2 =
-Changed format for link URL displayed by widget. Enter full URI for extrnal website or /pagename for permalink to page on local wordpress site
+Click this link to see the <a href="http://www.thehypervisor.com/login-logout-changelog/">changelog</a>.
