@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 1.5
+Version: 1.5.1
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Description: Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+
@@ -130,13 +130,13 @@ function rhsidebar_meta_control () {
 	<label for="rhhd_title"><?php _e('Title:','hypervisor-login-logout'); ?> <input type="text" id="rhhd_title" name="rhhd_title" value="<?php echo $title; ?>" /></label></p>
 
 	<p style="text-align: center">
-	<label for="edisplay_email"><?php _e('Display email: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["display_email"] == '1' ) echo 'checked="yes" '; ?> name="edisplay_email" id="edisplay_email" value="1" /></label></p>
+	<label for="edisplay_email"><?php _e('Display email: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["display_email"] == '1' ) echo 'checked="yes" '?> name="edisplay_email" id="edisplay_email" value="1" /></label></p>
 	<p style="text-align: center">
-	<label for="ecenter_widget"><?php _e('Center widget: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["center_widget"] == '1' ) echo 'checked="yes" '; ?> name="ecenter_widget" id="ecenter_widget" value="1" /></label></p>
+	<label for="ecenter_widget"><?php _e('Center widget: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["center_widget"] == '1' ) echo 'checked="yes" '?> name="ecenter_widget" id="ecenter_widget" value="1" /></label></p>
 	<p style="text-align: center">
-	<label for="ehide_option_label"><?php _e('Hide option label: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["hide_option_label"] == '1' ) echo 'checked="yes" '; ?> name="ehide_option_label" id="ehide_option_label" value="1" /></label></p>
+	<label for="ehide_option_label"><?php _e('Hide option label: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["hide_option_label"] == '1' ) echo 'checked="yes" ' ?> name="ehide_option_label" id="ehide_option_label" value="1" /></label></p>
 	<p style="text-align: center">
-	<label for="rhhd_sb_width"><?php _e('Sidebar width:','hypervisor-login-logout'); ?> <input type="text" size="5" maxlength="5" id="rhhd_sb_width" name="rhhd_sb_width" value="<?php echo wp_specialchars($options['sidebar_width']); ?>" /></label></p>
+	<label for="rhhd_sb_width"><?php _e('Sidebar width:','hypervisor-login-logout'); ?> <input type="text" size="5" maxlength="5" id="rhhd_sb_width" name="rhhd_sb_width" value="<?php echo wp_specialchars($options['sidebar_width']) ?>" /></label></p>
 
 	<p>
 	<?php _e('Please visit ','hypervisor-login-logout');
@@ -148,8 +148,8 @@ function rhsidebar_meta_control () {
 }
 
 function rh_plugin_init() {
-	$plugin_dir = basename(dirname(__FILE__));
-	load_plugin_textdomain( 'hypervisor-login-logout', 'wp-content/plugins/' . $plugin_dir, $plugin_dir );
+	$plugin_dir = dirname(plugin_basename(__FILE__));
+	load_plugin_textdomain( 'hypervisor-login-logout', PLUGINDIR . '/' . $plugin_dir . '/languages' , $plugin_dir . '/languages' );
 	register_sidebar_widget('Hypervisor '. __('Login/Logout','hypervisor-login-logout'), 'rhsidebar_meta');
 	register_widget_control('Hypervisor '. __('Login/Logout','hypervisor-login-logout'), 'rhsidebar_meta_control');
 	return;
@@ -219,11 +219,11 @@ function login_out_menu() {
 	?>
 	<p class="submit">
 	<input type="submit" name="update_loginout" value="<?php _e('Submit!','hypervisor-login-logout'); ?>" />
-	</form>
 	</p><br />
 	<h5><?php _e('Like this plugin?','hypervisor-login-logout'); ?></h5>
 	<?php _e('Please visit our website ','hypervisor-login-logout') ?><a href="http://www.thehypervisor.com">The Hypervisor</a>
 	</div>
+	</form>
 <?php _e('Or consider making a donation','hypervisor-login-logout') ?>.<br />
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick" />
