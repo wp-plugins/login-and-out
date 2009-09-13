@@ -6,7 +6,7 @@ Requires at least: 2.7
 Tested up to: 2.8.4
 Stable:1.5.2
 
-Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+.
+Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+. Available in English and French.
 
 == Description ==
 
