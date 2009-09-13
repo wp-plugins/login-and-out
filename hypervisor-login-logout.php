@@ -149,7 +149,7 @@ function rhsidebar_meta_control () {
 
 function rh_plugin_init() {
 	$plugin_dir = dirname(plugin_basename(__FILE__));
-	load_plugin_textdomain( 'hypervisor-login-logout', PLUGINDIR . '/' . $plugin_dir . '/languages' , $plugin_dir . '/languages' );
+	load_plugin_textdomain( 'hypervisor-login-logout', PLUGINDIR . '/' . $plugin_dir , $plugin_dir );
 	register_sidebar_widget('Hypervisor '. __('Login/Logout','hypervisor-login-logout'), 'rhsidebar_meta');
 	register_widget_control('Hypervisor '. __('Login/Logout','hypervisor-login-logout'), 'rhsidebar_meta_control');
 	return;
