@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 1.5.2
+Version: 1.5.3
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Plugin URI: http://www.thehypervisor.com/login-logout-changelog
@@ -157,6 +157,7 @@ function rh_plugin_init() {
 }
 
 add_action("plugins_loaded", "rh_plugin_init");
+add_action("admin_menu", "rh_plugin_init");
 
 // Hook for adding admin menus
 add_action('admin_menu', 'login_and_out_menu');
