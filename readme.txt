@@ -4,13 +4,15 @@ Donate link: http://www.rogerh.com/donate.html
 Tags: widget, login, logout
 Requires at least: 2.7
 Tested up to: 2.8.4
-Stable:1.5.3
+Stable:1.5.4
 
-Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+. Available in English, French and Persian.
+Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+. Available in English, French, Spanish, Dutch, Norwegian and Persian.
 
 == Description ==
 
 The WordPress "Meta" widget uses a lot of screen space and presents more information than some site designers would like. This Login/Logout widget provides web designers with a compact alternative.
+
+Available translatins: English, Fench (fr_FR), Spanish (es_ES), Dutch (nl_NL), Norwegian (nb_NO) and Persian (fa_IR).
 
 When the user is not logged in, the widget presents options to Register and to Login. Once logged in, users are redirected back to the page they came from instead of the Profile pages or other admin screens. The widget also displays the username and has an option to also display their email address.
 
