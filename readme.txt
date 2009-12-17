@@ -3,7 +3,7 @@ Contributors: roggie
 Donate link: http://www.rogerh.com/donate.html
 Tags: widget, login, logout
 Requires at least: 2.7
-Tested up to: 2.8.4
+Tested up to: 2.8.6
 Stable:1.5.5
 
 Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+. Available in English, French, Spanish, Dutch, Norwegian and Persian.
