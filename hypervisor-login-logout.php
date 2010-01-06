@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 1.5.5
+Version: 2.0.0
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Plugin URI: http://www.thehypervisor.com/login-logout-changelog
-Description: Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+. Available in English, French, Spanish, Dutch, Norwegian and Persian.
+Description: Adds a user friendly widget to make login/logout easy. Compatible WP 2.7+. Available in English, French, Spanish, Dutch, Norwegian, Polish and Persian.
 License: http://www.gnu.org/licenses/gpl.html
 Text Domain: hypervisor-login-logout
 */
@@ -40,11 +40,13 @@ THE SOFTWARE.
 
 */
 
-function rhsidebar_meta($args) {
-	extract ($args);
-	global $user_identity , $user_email;
-	$options = get_option('rh_hidedash_options');
+function rh_hype_lilo() {
+  global $user_identity , $user_email;
+  $insert_php = get_option ( 'rh_insert_php' );
+  $options = get_option('rh_hidedash_options');
+  if ( $insert_php == "0" )	{
 	if ( !wp_specialchars($options['sidebar_width']) ) $options['sidebar_width'] = "200"; 
+        echo '<!--Good news from <a href="http://www.thehypervisor.com">The Hypervisor</a>-->';
 	echo $before_widget;
 	if ( $options['center_widget'] ) echo '<div style="width:'. wp_specialchars($options['sidebar_width']) . 'px; margin: 0px auto;">';
 	echo $before_title . __($options['title'],'hypervisor-login-logout') . $after_title;
@@ -107,71 +109,84 @@ function rhsidebar_meta($args) {
 	}
 
 	// User _NOT_ Logged In
-	echo "<a href=\"".get_bloginfo('wpurl')."/wp-login.php?action=register&amp;redirect_to=".$_SERVER['REQUEST_URI']."\" title=\"".__('Register','hypervisor-login-logout')."\">".__('Register','hypervisor-login-logout')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
+	if ( $options['hide_register'] != 1 ) echo "<a href=\"".get_bloginfo('wpurl')."/wp-login.php?action=register&amp;redirect_to=".$_SERVER['REQUEST_URI']."\" title=\"".__('Register','hypervisor-login-logout')."\">".__('Register','hypervisor-login-logout')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
 	echo "<a href=\"".get_bloginfo('wpurl')."/wp-login.php?action=login&amp;redirect_to=".$_SERVER['REQUEST_URI']."\" title=\"".__('Login','hypervisor-login-logout')."\">".__('Login','hypervisor-login-logout')."</a>";
 	echo $after_widget;
 	return;
+  } // end of if use widget
+  else { // else use insert_php
+        $code = array();
+        echo '<!--Good news from <a href="http://www.thehypervisor.com">The Hypervisor</a>-->';
+	$all_links = get_option ( 'rh_hidedash_links_options' );
+	if ( !empty($all_links)) {
+		foreach ( $all_links as $link ) {
+		$extra_links = $extra_links . '<a href="'. current($link) .'">'. key($link).'</a> ';
+		} 
+	}
+
+	if (is_user_logged_in()) {
+		// User Already Logged In
+		get_currentuserinfo();  // Usually someone already did this, right?
+		if ( $options['display_email'] == '1' && !$options['hide_option_label'] ) $code[] = sprintf(__('Welcome, <u><b>%s</b></u> (%s)&nbsp;&nbsp;Options: &nbsp;','hypervisor-login-logout'),$user_identity,$user_email);
+		else
+		if ( $options['display_email'] == '1' && $options['hide_option_label'] ) $code[] = sprintf(__('Welcome, <u><b>%s</b></u> (%s)&nbsp;&nbsp;','hypervisor-login-logout'),$user_identity,$user_email);
+		else
+			if ( $options['hide_option_label'] ) $code[] = sprintf(__('Welcome, <u><b>%s</b></u>&nbsp;&nbsp;','hypervisor-login-logout'),$user_identity);
+			else $code[] = sprintf(__('Welcome, <u><b>%s</b></u>&nbsp;&nbsp;Options: &nbsp;','hypervisor-login-logout'),$user_identity);
+		// Default Strings
+		$link_string_site = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/index.php\" title=\"Site Admin\">Site Admin</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
+		$link_string_logout = '<a href="'. wp_logout_url($_SERVER['REQUEST_URI']) .'" title="Log out">Log out</a>';
+		$link_string_edit = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/edit.php\" title=\"".__('Edit Posts','hypervisor-login-logout')."\">".__('Edit Posts','hypervisor-login-logout')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
+		$link_string_profile = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/profile.php\" title=\"My Profile\">My Profile</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
+
+		// Administrator?
+		if (current_user_can('level_10')) {
+			$code[] = $link_string_site;
+                        $code[] = $link_string_logout;
+			if ( $extra_links ) $code[] = '<br />Links: '.$extra_links;
+			$code[] = $after_widget;
+		} else
+
+		// level_2?
+		if (current_user_can('level_2')) {
+			if ($options['allow_authed']) {
+				// Allow level_2 user to see Dashboard - treat like Administrator
+				$code[] = $link_string_site;
+				$code[] = $link_string_logout;
+				$code[] = $after_widget;
+			}
+			// Hide Dashboard for level_2 user
+			$code[] = $link_string_edit;
+			$code[] = $link_string_logout;
+			$code[] = $after_widget;
+		} else 
+
+		// Less than level_2 user - Hide Dashboard from this User
+		{
+                $code[] = $link_string_profile;
+		$code[] = $link_string_logout;
+		$code[] = $after_widget;
+                }
+	}
+else {
+	// User _NOT_ Logged In
+	if ( $options['hide_register'] != 1 ) $code[] = "<a href=\"".get_bloginfo('wpurl')."/wp-login.php?action=register&amp;redirect_to=".$_SERVER['REQUEST_URI']."\" title=\"".__('Register','hypervisor-login-logout')."\">".__('Register','hypervisor-login-logout')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
+	$code[] = "<a href=\"".get_bloginfo('wpurl')."/wp-login.php?action=login&amp;redirect_to=".$_SERVER['REQUEST_URI']."\" title=\"".__('Login','hypervisor-login-logout')."\">".__('Login','hypervisor-login-logout')."</a>";
+	$code[] = $after_widget;
+}
+   foreach ( $code as $snip ) {
+      _e($snip);
+   }
+   return $code;
+   } // end of insert_php
 }
 
-function rhsidebar_meta_control () {
+function rh_hype_lilo_control () {
 	$options = get_option('rh_hidedash_options');
 	if ( $_POST['rhhd_submit'] ) {
-		$options['title'] = strip_tags(stripslashes($_POST['rhhd_title']));
 		$options['sidebar_width'] = strip_tags(stripslashes($_POST['rhhd_sb_width']));
-		$options["display_email"] = $_POST['edisplay_email'];
 		$options["center_widget"] = $_POST['ecenter_widget'];
-		$options["hide_option_label"] = $_POST['ehide_option_label'];
 		update_option('rh_hidedash_options', $options);
-	}
-	$title = wp_specialchars($options['title']);
-	if ( !wp_specialchars($options['sidebar_width']) ) $options['sidebar_width'] = "160"; 
-	?>
-	<p style="text-align: center">
-	<input type="hidden" name="rhhd_submit" id="rhhd_submit" value="1" />
-	<label for="rhhd_title"><?php _e('Title:','hypervisor-login-logout'); ?> <input type="text" id="rhhd_title" name="rhhd_title" value="<?php echo $title; ?>" /></label></p>
-
-	<p style="text-align: center">
-	<label for="edisplay_email"><?php _e('Display email: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["display_email"] == '1' ) echo 'checked="yes" '?> name="edisplay_email" id="edisplay_email" value="1" /></label></p>
-	<p style="text-align: center">
-	<label for="ecenter_widget"><?php _e('Center widget: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["center_widget"] == '1' ) echo 'checked="yes" '?> name="ecenter_widget" id="ecenter_widget" value="1" /></label></p>
-	<p style="text-align: center">
-	<label for="ehide_option_label"><?php _e('Hide option label: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["hide_option_label"] == '1' ) echo 'checked="yes" ' ?> name="ehide_option_label" id="ehide_option_label" value="1" /></label></p>
-	<p style="text-align: center">
-	<label for="rhhd_sb_width"><?php _e('Sidebar width:','hypervisor-login-logout'); ?> <input type="text" size="5" maxlength="5" id="rhhd_sb_width" name="rhhd_sb_width" value="<?php echo wp_specialchars($options['sidebar_width']) ?>" /></label></p>
-
-	<p>
-	<?php _e('Please visit ','hypervisor-login-logout');
-	echo '<a href="tools.php?page=login_out_menu">';
-	_e('Login & Out widget settings','hypervisor-login-logout');
-	echo '</a> ';
-	_e('to adjust other settings.</p>','hypervisor-login-logout');
-	return;
-}
-
-function rh_plugin_init() {
-	$plugin_dir = dirname(plugin_basename(__FILE__));
-	load_plugin_textdomain( 'hypervisor-login-logout', PLUGINDIR . '/' . $plugin_dir , $plugin_dir );
-	register_sidebar_widget('Hypervisor '. __('Login/Logout','hypervisor-login-logout'), 'rhsidebar_meta');
-	register_widget_control('Hypervisor '. __('Login/Logout','hypervisor-login-logout'), 'rhsidebar_meta_control');
-	return;
-}
-
-add_action("plugins_loaded", "rh_plugin_init");
-add_action("admin_menu", "rh_plugin_init");
-
-// Hook for adding admin menus
-add_action('admin_menu', 'login_and_out_menu');
-
-// action function for above hook
-function login_and_out_menu() {
-	add_management_page('Login & Out', 'Login & Out', 8, 'login_out_menu', 'login_out_menu');
-}
-
-// login_out_menu() displays the page content for the Login & Out admin submenu
-function login_out_menu() {
-	if ( isset ($_POST['update_loginout']) )  { 
-		if ( !wp_verify_nonce ( $_POST['loginout-verify-key'], 'loginout') ) die(__('Failed security check. Reload page and retry','hypervisor-login-logout'));
-
 		$cur_links = array();
 		$new_links = array();
 		$cur_links = get_option ( 'rh_hidedash_links_options' );
@@ -191,38 +206,116 @@ function login_out_menu() {
 			sort ( $new_links);
 		}
 	update_option ( 'rh_hidedash_links_options', $new_links );
+
+
+	}
+        $title = wp_specialchars($options['title']);
+	if ( !wp_specialchars($options['sidebar_width']) ) $options['sidebar_width'] = "160"; 
+	?>
+	<p style="text-align: center">
+	<input type="hidden" name="rhhd_submit" id="rhhd_submit" value="1" />
+        <label for="rhhd_title"><?php _e('Title:','hypervisor-login-logout'); ?> <input type="text" id="rhhd_title" name="rhhd_title" value="<?php echo $title; ?>" /></label></p>
+	<p style="text-align: center">
+	<label for="ecenter_widget"><?php _e('Center widget: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["center_widget"] == '1' ) echo 'checked="yes" '?> name="ecenter_widget" id="ecenter_widget" value="1" /></label></p>
+	<p style="text-align: center">
+	<label for="rhhd_sb_width"><?php _e('Sidebar width:','hypervisor-login-logout'); ?> <input type="text" size="5" maxlength="5" id="rhhd_sb_width" name="rhhd_sb_width" value="<?php echo wp_specialchars($options['sidebar_width']) ?>" /></label></p>
+
+        <?php
+	echo "<h3>". __('Add a link to the widget','hypervisor-login-logout'). "</h3>";
+	echo __('Text for a new link','hypervisor-login-logout') . ' :<p><input type="text" name="nlink-text" id="nlink-text" value="" /></p>';
+	echo __('Target for a new link','hypervisor-login-logout') . ' :<p><input type="text" name="nlink-target" id="nlink-target" value="" /></p>';
+	echo "<h3>" . __('Remove Links','hypervisor-login-logout') . "</h3>";
+	echo __('Un-tick to delete','hypervisor-login-logout');
+	$all_links = get_option ( 'rh_hidedash_links_options' );
+	if ( !empty ($all_links) ) {
+		echo '<table border="2" cellpadding="6"><tr>';
+		$count = 0;
+		$link = array();
+		echo '<th>' . __('Text','hypervisor-login-logout') . '</th><th>' . __('Target','hypervisor-login-logout') . '</th><th></th></tr>';
+		foreach ( $all_links as $link ) {
+			echo '<tr><td>'. __(key($link),'hypervisor-login-logout').'</td><td>'. current($link).'</td><td><input type="checkbox" checked="checked"'; echo ' name="'. $count.'" id="link'. $count.'" value="1" /></td></tr>';
+			$count++;
+		}
+		echo '</table><br />';
+	}
+	else _e('<p>No links in database.</p>','hypervisor-login-logout');
+	?>
+	<p>
+	<?php _e('Please visit ','hypervisor-login-logout');
+	echo '<a href="tools.php?page=login_out_menu">';
+	_e('Login & Out widget settings','hypervisor-login-logout');
+	echo '</a> ';
+	_e('to adjust other settings.</p>','hypervisor-login-logout');
+	return;
+}
+
+function rh_plugin_init() {
+	$plugin_dir = dirname(plugin_basename(__FILE__));
+	load_plugin_textdomain( 'hypervisor-login-logout', PLUGINDIR . '/' . $plugin_dir , $plugin_dir );
+	register_sidebar_widget('Hypervisor '. __('Login/Logout','hypervisor-login-logout'), 'rh_hype_lilo');
+	register_widget_control('Hypervisor '. __('Login/Logout','hypervisor-login-logout'), 'rh_hype_lilo_control');
+	return;
+}
+
+add_action("plugins_loaded", "rh_plugin_init");
+add_action("admin_menu", "rh_plugin_init");
+
+// Hook for adding admin menus
+add_action('admin_menu', 'login_and_out_menu');
+
+// action function for above hook
+function login_and_out_menu() {
+	add_management_page('Login & Out', 'Login & Out', 8, 'login_out_menu', 'login_out_menu');
+}
+
+// login_out_menu() displays the page content for the Login & Out admin submenu
+function login_out_menu() {
+	if ( isset ($_POST['update_loginout']) )  { 
+		if ( !wp_verify_nonce ( $_POST['loginout-verify-key'], 'loginout') ) die(__('Failed security check. Reload page and retry','hypervisor-login-logout'));
+
+
+
+        if ( $_POST['insert_php'] == 'php' ) update_option ( 'rh_insert_php', '1' ); else update_option ( 'rh_insert_php', '0' );
+		$options['title'] = strip_tags(stripslashes($_POST['rhhd_title']));
+		$options["display_email"] = $_POST['edisplay_email'];
+		$options["hide_register"] = $_POST['ehide_register'];
+		$options["hide_option_label"] = $_POST['ehide_option_label'];
+	        update_option ( 'rh_hidedash_options', $options );
+
 	?><div id="message" class="updated fade"><p><strong><?php _e('Login and Out options updated.','hypervisor-login-logout'); ?></strong></p></div><?php
 	} // end if isset
 	?>
 	<form name="form1" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
 	<div class="form-field">
 	<?php
-	echo "<h2>" . __('Login and Out widget options','hypervisor-login-logout') . "</h2>";
+	echo "<h2>" . __('Login and Out Configuration','hypervisor-login-logout') . "</h2>";
 	echo '<input type="hidden" name="loginout-verify-key" id="loginout-verify-key" value="' . wp_create_nonce('loginout') . '" />';
+	$options = get_option('rh_hidedash_options');
+	$insert_php = get_option ( 'rh_insert_php' );
+	echo "<h3>". __('Where to display Login Logout?','hypervisor-login-logout'). "</h3>";
+	echo "<p>". __('Display the plugin output in a widget or by inserting "&lt&#63php rh_hype_lilo();&#63&gt" into your template file(s).','hypervisor-login-logout'). "</p>";
+        echo '<table><tr><td>';
+        echo '<input type="radio" name="insert_php" value="widget"';
+        if ($insert_php == 0 ) echo ' CHECKED';
+        echo ' />Use Widget';
+        echo '</td><td>';
+        echo '<input type="radio" name="insert_php" value="php"';
+        if ($insert_php == 1 ) echo ' CHECKED';
+        echo ' /> Insert PHP';
+        echo '</td></tr></table>';
+	echo "<h3>". __('Other display options','hypervisor-login-logout'). "</h3>";
+        ?> 
+        <table>
+	<tr><td><label for="edisplay_email"><?php _e('Display email address: ','hypervisor-login-logout'); ?></td><td><input type="checkbox" <?php if ( $options["display_email"] == '1' ) echo 'checked="yes" '?> name="edisplay_email" id="edisplay_email" value="1" /></label></td></tr>
+	<tr><td><label for="ehide_option_label"><?php _e('Hide option label: ','hypervisor-login-logout'); ?></td><td><input type="checkbox" <?php if ( $options["hide_option_label"] == '1' ) echo 'checked ' ?> name="ehide_option_label" id="ehide_option_label" value="1" /></label></td></tr>
+	<tr><td><label for="ehide_register"><?php _e('Hide Register link: ','hypervisor-login-logout'); ?></td><td><input type="checkbox" <?php if ( $options["hide_register"] == '1' ) echo 'checked ' ?> name="ehide_register" id="ehide_register" value="1" /></label>
+</table>
 
-	echo "<h3>". __('Add a link to the widget','hypervisor-login-logout'). "</h3>";
-	echo '<p>' . __('Add text for a new link','hypervisor-login-logout') . ' :</p><p><input type="text" name="nlink-text" id="nlink-text" value="" /></p>';
-	echo '<p>' . __('Add target for a new link','hypervisor-login-logout') . ' :</p><p><input type="text" name="nlink-target" id="nlink-target" value="" /></p>';
-	echo "<h3>" . __('Links on the widget (un-tick to delete)','hypervisor-login-logout') . "</h3>";
-	$all_links = get_option ( 'rh_hidedash_links_options' );
-	if ( !empty ($all_links) ) {
-		echo '<table border="2" cellpadding="4" width="50%"><tr>';
-		$count = 0;
-		$link = array();
-		echo '<th>' . __('Link text','hypervisor-login-logout') . '</th><th>' . __('Link target','hypervisor-login-logout') . '</th><th></th></tr>';
-		foreach ( $all_links as $link ) {
-			echo '<tr><td>'. __(key($link),'hypervisor-login-logout').'</td><td>'. current($link).'</td><td><input type="checkbox" checked="checked"'; echo ' name="'. $count.'" id="link'. $count.'" value="1" /></td></tr>';
-			$count++;
-		}
-		echo '</table>';
-	}
-	else _e('No links in database.','hypervisor-login-logout');
 
-	?>
 	<p class="submit">
 	<input type="submit" name="update_loginout" value="<?php _e('Submit!','hypervisor-login-logout'); ?>" />
 	</p><br />
-	<h5><?php _e('Like this plugin?','hypervisor-login-logout'); ?></h5>
+	<h3><?php _e('Like this plugin?','hypervisor-login-logout'); ?></h3>
 	<?php _e('Please visit our website ','hypervisor-login-logout') ?><a href="http://www.thehypervisor.com">The Hypervisor</a>
 	</div>
 	</form>
@@ -236,4 +329,5 @@ function login_out_menu() {
 </form>
 <?php
 }
+
 ?>
