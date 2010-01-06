@@ -6,7 +6,7 @@ Requires at least: 2.7
 Tested up to: 2.9.1
 Stable:2.0.0
 
-Adds a user friendly tool to make login/logout easy. Can be used as a widget orinserted into your site's PHP. Compatible WP 2.7+. Available in English, French, Spanish, Dutch, Norwegian and Persian.
+Adds a user friendly tool to make login/logout easy. Can be used as a widget or inserted into your site's PHP. Compatible WP 2.7+. Available in English, French, Spanish, Dutch, Norwegian and Persian.
 
 == Description ==
 
@@ -14,13 +14,13 @@ The WordPress "Meta" widget uses a lot of screen space and presents more informa
 
 Available translations: English, French, Spanish, Dutch, Polish, Norwegian and Persian.
 
-Version 2 - The plugin can now display itself as a widget in themes that include sidebars. Alternatively, it can be added to your site's footer or any other part of the site by inserting "rh_hype_lilo(); into your site's PHP.
+The plugin can display itself as a widget in themes that include sidebars. Alternatively, it can be added to your site's footer or any other part of the site by inserting "rh_hype_lilo(); into your site's PHP.
 
-When the user is not logged in, the plugin presents options to Register and to Login. Once logged in, users are redirected back to the page they came from instead of the Profile pages or other admin screens. The plugin also displays the username and has an option to also display their email address.
+When the user is not logged in, the plugin presents options to Register and to Login. Once logged in, users are redirected back to the page they came from. The plugin also displays the username and has an option to also display their email address.
 
 There is also a link to Logout and, depending on the user's role, a link to their profile or to the main site administration pages. Users are redirected back to the page they came from after they logout.
 
-When used as ai widget, a hyperlink option enables the widget to display an arbitrary number of hyperlinks to other sites/pages. These links are displayed only to logged in users. Other options enable the appearance of the widget to be customized to suit the theme design.
+When used as a widget, a hyperlink option enables the widget to display an arbitrary number of hyperlinks to other sites/pages. These links are displayed only to logged in users. Other options enable the appearance of the widget to be customized to suit the theme design.
 
 <a href="http://www.thehypervisor.com/login-logout-changelog/">Changelog</a>
 
