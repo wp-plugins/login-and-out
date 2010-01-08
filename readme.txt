@@ -14,9 +14,9 @@ The WordPress "Meta" widget uses a lot of screen space and presents more informa
 
 Available translations: English, French, Italian, Spanish, Dutch, Polish, Norwegian and Persian.
 
-The plugin can display itself as a widget in themes that include sidebars. Alternatively, it can be added to your site's footer or any other part of the site by inserting "rh_hype_lilo(); into your site's PHP.
+The plugin can be used as a widget in themes that include sidebars. Alternatively, it can be added to your site's footer or any other part of the site by inserting "rh_hype_lilo(); into your site's PHP.
 
-When the user is not logged in, the plugin presents options to Register and to Login. Once logged in, users are redirected back to the page they came from. The plugin also displays the username and has an option to also display their email address.
+When the user is not logged in, the plugin presents a link so the user can Login, and an option allows another link to Register. Once logged in, users are redirected back to the page they came from. The plugin also displays the username and has an option to also display their email address.
 
 There is also a link to Logout and, depending on the user's role, a link to their profile or to the main site administration pages. Users are redirected back to the page they came from after they logout.
 
