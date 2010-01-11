@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 2.1.1
+Version: 2.1.2
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Plugin URI: http://www.thehypervisor.com/login-logout-changelog
@@ -44,8 +44,8 @@ function rh_hype_lilo() {
   global $user_identity , $user_email;
   $insert_php = get_option ( 'rh_insert_php' );
   $options = get_option('rh_hidedash_options');
-  $before_html = $options['before_html'];
-  $after_html = $options['after_html'];
+  $before_html = stripslashes($options['before_html']);
+  $after_html = stripslashes($options['after_html']);
   echo "<!--Hypervisor Login Logout start-->";
   if ( $insert_php == "0" )	{
 	if ( !wp_specialchars($options['sidebar_width']) ) $options['sidebar_width'] = "200"; 
@@ -292,8 +292,8 @@ function login_out_menu() {
 	echo '<input type="hidden" name="loginout-verify-key" id="loginout-verify-key" value="' . wp_create_nonce('loginout') . '" />';
 	$options = get_option('rh_hidedash_options');
 	$insert_php = get_option ( 'rh_insert_php' );
-        $before_html = $options['before_html'];
-        $after_html = $options['after_html'];
+        $before_html = stripslashes($options['before_html']);
+        $after_html = stripslashes($options['after_html']);
 	echo "<h3>". __('Where to display Login Logout?','hypervisor-login-logout'). "</h3>";
 	echo "<p>". __('Display the plugin output in a widget or by inserting "&lt&#63php rh_hype_lilo();&#63&gt" into your template file(s).','hypervisor-login-logout'). "</p>";
         echo '<table><tr><td>';
