@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 2.1.2
+Version: 2.1.3
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Plugin URI: http://www.thehypervisor.com/login-logout-changelog
@@ -52,7 +52,7 @@ function rh_hype_lilo() {
         echo '<!--Good news from <a href="http://www.thehypervisor.com">The Hypervisor</a>-->';
 	echo $before_html;
 	if ( $options['center_widget'] ) echo '<div style="width:'. wp_specialchars($options['sidebar_width']) . 'px; margin: 0px auto;">';
-	echo $before_title . __($options['title'],'hypervisor-login-logout') . $after_title;
+	echo '<p>' . __(stripslashes($options['title']),'hypervisor-login-logout'). '</p>';
 	$all_links = get_option ( 'rh_hidedash_links_options' );
 	if ( !empty($all_links)) {
 		foreach ( $all_links as $link ) {
@@ -187,8 +187,9 @@ else {
 function rh_hype_lilo_control () {
 	$options = get_option('rh_hidedash_options');
 	if ( $_POST['rhhd_submit'] ) {
-		$options['sidebar_width'] = strip_tags(stripslashes($_POST['rhhd_sb_width']));
+		$options['sidebar_width'] = $_POST['rhhd_sb_width'];
 		$options["center_widget"] = $_POST['ecenter_widget'];
+		$options['title'] = $_POST['rhhd_title'];
 		update_option('rh_hidedash_options', $options);
 		$cur_links = array();
 		$new_links = array();
@@ -210,7 +211,7 @@ function rh_hype_lilo_control () {
 		}
 	update_option ( 'rh_hidedash_links_options', $new_links );
 	}
-        $title = wp_specialchars($options['title']);
+        $title = wp_specialchars(stripslashes($options['title']));
 	if ( !wp_specialchars($options['sidebar_width']) ) $options['sidebar_width'] = "160"; 
 	?>
 	<p style="text-align: center">
@@ -274,7 +275,6 @@ function login_out_menu() {
 	if ( isset ($_POST['update_loginout']) )  { 
 		if ( !wp_verify_nonce ( $_POST['loginout-verify-key'], 'loginout') ) die(__('Failed security check. Reload page and retry','hypervisor-login-logout'));
         if ( $_POST['insert_php'] == 'php' ) update_option ( 'rh_insert_php', '1' ); else update_option ( 'rh_insert_php', '0' );
-		$options['title'] = strip_tags(stripslashes($_POST['rhhd_title']));
 		$options["display_email"] = $_POST['edisplay_email'];
 		$options["hide_register"] = $_POST['ehide_register'];
 		$options["hide_option_label"] = $_POST['ehide_option_label'];
