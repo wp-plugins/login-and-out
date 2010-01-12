@@ -4,7 +4,7 @@ Donate link: http://www.rogerh.com/donate.html
 Tags: widget, login, logout
 Requires at least: 2.7
 Tested up to: 2.9.1
-Stable:2.1.3
+Stable:2.1.4
 
 Adds simple, clean links so users can login/logout & register easily. Highly customisable, & can be used as a widget or inserted into your site's PHP. Many translations available.
 
@@ -12,7 +12,7 @@ Adds simple, clean links so users can login/logout & register easily. Highly cus
 
 The WordPress "Meta" widget uses a lot of screen space and presents more information than some site designers would like. The Login/Logout plugin provides web designers with a compact alternative.
 
-Available translations: English, French, Italian, Spanish, Dutch, Polish, Norwegian and Persian.
+Available translations: English, French, German, Italian, Spanish, Dutch, Polish, Norwegian and Persian.
 
 The plugin can be used as a widget in themes that include sidebars. Alternatively, it can be added to your site's footer or any other part of the site by inserting "rh_hype_lilo(); into your site's PHP.
 
