@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 2.1.4
+Version: 2.1.5
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Plugin URI: http://www.thehypervisor.com/login-logout-changelog
@@ -233,9 +233,9 @@ function rh_hype_lilo_control () {
 		echo '<table border="2" cellpadding="6"><tr>';
 		$count = 0;
 		$link = array();
-		echo '<th>' . __('Text','hypervisor-login-logout') . '</th><th>' . __('Target','hypervisor-login-logout') . '</th><th></th></tr>';
+		echo '<th></th><th>' . __('Text','hypervisor-login-logout') . '</th><th>' . __('Target','hypervisor-login-logout') . '</th><th></th></tr>';
 		foreach ( $all_links as $link ) {
-			echo '<tr><td>'. __(key($link),'hypervisor-login-logout').'</td><td>'. current($link).'</td><td><input type="checkbox" checked="checked"'; echo ' name="'. $count.'" id="link'. $count.'" value="1" /></td></tr>';
+			echo '<tr><td><input type="checkbox" checked="checked"'; echo ' name="'. $count.'" id="link'. $count.'" value="1" /></td><td>'. __(key($link),'hypervisor-login-logout').'</td><td>'. current($link).'</td></tr>';
 			$count++;
 		}
 		echo '</table><br />';

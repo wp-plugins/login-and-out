@@ -114,7 +114,7 @@ msgstr "Links entfernen"
 
 #: hypervisor-login-logout.php:229
 msgid "Un-tick to delete"
-msgstr "Klicken um zu löschen"
+msgstr "Haken entfernen um einen Link zu löschen"
 
 #: hypervisor-login-logout.php:235
 msgid "Text"
