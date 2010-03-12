@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 2.1.6
+Version: 2.1.7
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Plugin URI: http://www.thehypervisor.com/login-logout-changelog
@@ -40,8 +40,7 @@ THE SOFTWARE.
 
 */
 
-function rh_hype_lilo($args) {
-  extract($args);
+function rh_hype_lilo() {
   echo $before_widget;
   global $user_identity , $user_email;
   $insert_php = get_option ( 'rh_insert_php' );
