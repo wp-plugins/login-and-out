@@ -4,7 +4,7 @@ Donate link: http://www.rogerh.com/donate.html
 Tags: widget, login, logout
 Requires at least: 2.7
 Tested up to: 2.9.1
-Stable:2.1.5
+Stable:2.1.6
 
 Adds simple, clean links so users can login/logout & register easily. Highly customisable, & can be used as a widget or inserted into your site's PHP. Many translations available.
 
