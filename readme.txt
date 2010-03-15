@@ -22,6 +22,8 @@ There is also a link to Logout and, depending on the user's role, a link to thei
 
 When used as a widget, a hyperlink option enables the widget to display an arbitrary number of hyperlinks to other sites/pages. These links are displayed only to logged in users. Other options enable the appearance of the widget to be customized to suit the theme design.
 
+You must logout and in again to see changes such as new links tc. in the widget.
+
 <a href="http://www.thehypervisor.com/login-logout-changelog/">Changelog</a>
 
 <a href="http://twitter.com/thehypervisor">Follow me on Twitter</a href>
