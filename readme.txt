@@ -49,6 +49,7 @@ Enter a permalink - e.g. /about - to link to an internal Wordpress blog page or 
 1. This shows the widget near the bottom right corner of the screen.
 2. Widget Configuration Options (Version 1.1+).
 3. General Configuration Options - accessed from Tools menu.
+4. This shows the plugin output when used in the page footer.
 
 == Changelog ==
 
