@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 2.2.0
+Version: 2.2.1
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Plugin URI: http://www.thehypervisor.com/login-logout-changelog
@@ -51,7 +51,7 @@ function rh_hype_lilo_widget($args) {
 	echo __(stripslashes($options['title']),'hypervisor-login-logout');
         echo '<!--IT news from http://www.thehypervisor.com-->';
 	if ( !wp_specialchars($options['sidebar_width']) ) $options['sidebar_width'] = "200";
-	if ( $options['center_widget'] ) echo '<div style="width:'. wp_specialchars($options['sidebar_width']) . 'px; margin: 0px auto;">';
+	if ( $options['center_widget'] ) echo '<div style="width:'. wp_specialchars($options['sidebar_width']) . 'px; margin:0 auto;">';
 	$all_links = get_option ( 'rh_hidedash_links_options' );
 	if ( !empty($all_links)) {
 		foreach ( $all_links as $link ) {
@@ -68,8 +68,8 @@ function rh_hype_lilo_widget($args) {
 		if ( $options['hide_option_label'] ) $code[] = sprintf(__('Welcome, <u><b>%s</b></u><br />','hypervisor-login-logout'),$user_identity);
 		else $code[] = sprintf(__('Welcome, <u><b>%s</b></u><br />Options: &nbsp;','hypervisor-login-logout'),$user_identity);
 		// Default Strings
-		$link_string_site = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/index.php\" title=\"Site Admin\">Site Admin</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
-		$link_string_logout = '<a href="'. wp_logout_url($_SERVER['REQUEST_URI']) .'" title="Log out">Log out</a>';
+		$link_string_site = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/index.php\" title=\"".__('Site Admin','hypervisor-login-logout')."\">".__('Site Admin','hypervisor-login-logout')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
+		$link_string_logout = '<a href="'. wp_logout_url($_SERVER['REQUEST_URI']) .'" title="'.__('Log out','hypervisor-login-logout').'">'.__('Log out','hypervisor-login-logout').'</a>';
 		$link_string_edit = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/edit.php\" title=\"".__('Edit Posts','hypervisor-login-logout')."\">".__('Edit Posts','hypervisor-login-logout')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
 		$link_string_profile = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/profile.php\" title=\"My Profile\">My Profile</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
 
@@ -236,7 +236,7 @@ function rh_hype_lilo_control () {
 	<p style="text-align: center">
 	<label for="ecenter_widget"><?php _e('Center widget: ','hypervisor-login-logout'); ?><input type="checkbox" <?php if ( $options["center_widget"] == '1' ) echo 'checked="yes" '?> name="ecenter_widget" id="ecenter_widget" value="1" /></label></p>
 	<p style="text-align: center">
-	<label for="rhhd_sb_width"><?php _e('Sidebar width:','hypervisor-login-logout'); ?> <input type="text" size="5" maxlength="5" id="rhhd_sb_width" name="rhhd_sb_width" value="<?php echo wp_specialchars($options['sidebar_width']) ?>" /></label></p>
+	<label for="rhhd_sb_width"><?php _e('Widget width:','hypervisor-login-logout'); ?> <input type="text" size="5" maxlength="5" id="rhhd_sb_width" name="rhhd_sb_width" value="<?php echo wp_specialchars($options['sidebar_width']) ?>" /></label></p>
 
         <?php
 	echo "<h3>". __('Add a link to the widget','hypervisor-login-logout'). "</h3>";
@@ -264,7 +264,7 @@ function rh_hype_lilo_control () {
 	_e('Login & Out widget settings','hypervisor-login-logout');
 	echo '</a> ';
 	_e('to adjust other settings.</p>','hypervisor-login-logout');
-	_e('Note: You must logout and in again to see changes in widget.');
+	_e('Note: You must logout and in again to see changes in widget.','hypervisor-login-logout');
 	return;
 }
 
