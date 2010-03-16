@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 2.2.2
+Version: 2.2.3
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Plugin URI: http://www.thehypervisor.com/login-logout-changelog
