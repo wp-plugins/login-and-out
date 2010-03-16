@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/login-and-out\n"
-"POT-Creation-Date: 2010-03-15 20:46+0000\n"
+"POT-Creation-Date: 2010-03-16 13:27+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,14 @@ msgstr ""
 #: hypervisor-login-logout.php:69
 #, php-format
 msgid "Welcome, <u><b>%s</b></u><br />Options: &nbsp;"
+msgstr ""
+
+#: hypervisor-login-logout.php:71 hypervisor-login-logout.php:149
+msgid "Site Admin"
+msgstr ""
+
+#: hypervisor-login-logout.php:72 hypervisor-login-logout.php:150
+msgid "Log out"
 msgstr ""
 
 #: hypervisor-login-logout.php:73 hypervisor-login-logout.php:151
@@ -68,14 +76,6 @@ msgstr ""
 msgid "Welcome, <u><b>%s</b></u>&nbsp;&nbsp;Options: &nbsp;"
 msgstr ""
 
-#: hypervisor-login-logout.php:149
-msgid "Site Admin"
-msgstr ""
-
-#: hypervisor-login-logout.php:150
-msgid "Log out"
-msgstr ""
-
 #: hypervisor-login-logout.php:152
 msgid "My Profile"
 msgstr ""
@@ -89,7 +89,7 @@ msgid "Center widget: "
 msgstr ""
 
 #: hypervisor-login-logout.php:239
-msgid "Sidebar width:"
+msgid "Widget width:"
 msgstr ""
 
 #: hypervisor-login-logout.php:242
