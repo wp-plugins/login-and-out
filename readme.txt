@@ -26,6 +26,8 @@ You must logout and in again to see changes such as new links etc. in the widget
 
 <a href="http://www.thehypervisor.com/login-logout-changelog/">Changelog</a>
 
+<a href="http://www.facebook.com/home.php?sk=lf#!/pages/The-Hypervisor/114689115238103">Follow me on Facebook</a href>
+
 <a href="http://twitter.com/thehypervisor">Follow me on Twitter</a href>
 
 == Installation ==
