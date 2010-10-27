@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 2.2.4
+Version: 2.3.0
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Plugin URI: http://www.thehypervisor.com/login-logout-changelog
@@ -71,7 +71,7 @@ function rh_hype_lilo_widget($args) {
 		$link_string_site = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/index.php\" title=\"".__('Site Admin','hypervisor-login-logout')."\">".__('Site Admin','hypervisor-login-logout')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
 		$link_string_logout = '<a href="'. wp_logout_url($_SERVER['REQUEST_URI']) .'" title="'.__('Log out','hypervisor-login-logout').'">'.__('Log out','hypervisor-login-logout').'</a>';
 		$link_string_edit = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/edit.php\" title=\"".__('Edit Posts','hypervisor-login-logout')."\">".__('Edit Posts','hypervisor-login-logout')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
-		$link_string_profile = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/profile.php\" title=\"My Profile\">My Profile</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
+		$link_string_profile = "<a href=\"".get_bloginfo('wpurl')."/wp-admin/profile.php\" title=\"".__('My Profile','hypervisor-login-logout')."\">".__('My Profile','hypervisor-login-logout')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
 
 		// Administrator?
 		if (current_user_can('level_10')) {
