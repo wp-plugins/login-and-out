@@ -3,8 +3,8 @@ Contributors: roggie
 Donate link: http://www.rogerh.com/donate.html
 Tags: widget, login, logout
 Requires at least: 2.7
-Tested up to: 2.9.1
-Stable:2.2.0
+Tested up to: 3.0.0
+Stable:2.3.0
 
 Adds simple, clean links so users can login/logout & register easily. Highly customisable, & can be used as a widget or inserted into your site's PHP. Many translations available.
 
@@ -12,7 +12,7 @@ Adds simple, clean links so users can login/logout & register easily. Highly cus
 
 The WordPress "Meta" widget uses a lot of screen space and presents more information than some site designers would like. The Login/Logout plugin provides web designers with a compact alternative.
 
-Available translations: English, French, German, Italian, Spanish, Dutch, Polish, Norwegian and Persian.
+Available translations: English, French, German, Italian, Spanish, Catalan, Dutch, Polish, Norwegian and Persian.
 
 The plugin can be used as a widget in themes that include sidebars. Alternatively, it can be added to your site's footer or any other part of the site by inserting "rh_hype_lilo(); into your site's PHP.
 
@@ -22,9 +22,11 @@ There is also a link to Logout and, depending on the user's role, a link to thei
 
 When used as a widget, a hyperlink option enables the widget to display an arbitrary number of hyperlinks to other sites/pages. These links are displayed only to logged in users. Other options enable the appearance of the widget to be customized to suit the theme design.
 
-You must logout and in again to see changes such as new links tc. in the widget.
+You must logout and in again to see changes such as new links etc. in the widget.
 
 <a href="http://www.thehypervisor.com/login-logout-changelog/">Changelog</a>
+
+<a href="http://www.facebook.com/home.php?sk=lf#!/pages/The-Hypervisor/114689115238103">Follow me on Facebook</a href>
 
 <a href="http://twitter.com/thehypervisor">Follow me on Twitter</a href>
 
@@ -46,9 +48,10 @@ Enter a permalink - e.g. /about - to link to an internal Wordpress blog page or 
 
 == Screenshots ==
 
-1. This shows the widget near the bottom right corner of the screen.
+1. Plugin output as widget.
 2. Widget Configuration Options (Version 1.1+).
 3. General Configuration Options - accessed from Tools menu.
+4. Plugin output in page footer.
 
 == Changelog ==
 
