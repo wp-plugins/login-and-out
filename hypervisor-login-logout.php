@@ -10,15 +10,9 @@ License: http://www.gnu.org/licenses/gpl.html
 Text Domain: hypervisor-login-logout
 */
 /*
-Installation
-1. Copy the file login-and-out.php to your WordPress plugins directory.
-2. Login to WordPress as Administrator, go to Plugins and Activate it.
-3. Add the Login-Logout widget to your Widget-enabled Sidebar
-   instead of the default "Meta" Widget
-
 Credit: Thanks to Patrick Khoo http://www.deepwave.net/ for model code. I worked with his Hide dashboard code, removed unwanted sections and updated for Wordpress 2.7+.
 
-Copyright (c) 2009 Roger Howorth
+Copyright (c) 2012 Roger Howorth
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
