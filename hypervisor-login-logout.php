@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Login-Logout
-Version: 2.3.0
+Version: 2.6.1
 Author: Roger Howorth
 Author URI: http://www.thehypervisor.com
 Plugin URI: http://www.thehypervisor.com/login-logout-changelog
@@ -10,9 +10,15 @@ License: http://www.gnu.org/licenses/gpl.html
 Text Domain: hypervisor-login-logout
 */
 /*
+Installation
+1. Copy the file login-and-out.php to your WordPress plugins directory.
+2. Login to WordPress as Administrator, go to Plugins and Activate it.
+3. Add the Login-Logout widget to your Widget-enabled Sidebar
+   instead of the default "Meta" Widget
+
 Credit: Thanks to Patrick Khoo http://www.deepwave.net/ for model code. I worked with his Hide dashboard code, removed unwanted sections and updated for Wordpress 2.7+.
 
-Copyright (c) 2012 Roger Howorth
+Copyright (c) 2009 Roger Howorth
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -101,8 +107,7 @@ function rh_hype_lilo_widget($args) {
 		$code[] = $after_html;
                 }
 	}
-	else 
-	{
+else {
 	// User _NOT_ Logged In
 	if ( $options['hide_register'] != 1 ) $code[] = "<a href=\"".get_bloginfo('wpurl')."/wp-login.php?action=register&amp;redirect_to=".$_SERVER['REQUEST_URI']."\" title=\"".__('Register','hypervisor-login-logout')."\">".__('Register','hypervisor-login-logout')."</a>&nbsp;&nbsp;|&nbsp;&nbsp;";
 	$code[] = "<a href=\"".get_bloginfo('wpurl')."/wp-login.php?action=login&amp;redirect_to=".$_SERVER['REQUEST_URI']."\" title=\"".__('Login','hypervisor-login-logout')."\">".__('Login','hypervisor-login-logout')."</a>";
